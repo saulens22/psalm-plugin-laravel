@@ -26,10 +26,10 @@ use Symfony\Component\Finder\Finder;
 
 use function array_merge;
 use function dirname;
-use function fwrite;
 use function explode;
-use function glob;
 use function is_string;
+use function Safe\fwrite;
+use function Safe\glob;
 
 /**
  * @psalm-suppress UnusedClass
@@ -70,7 +70,7 @@ class Plugin implements PluginEntryPointInterface
         return $stubFilepaths;
     }
 
-    /** @return list<string> */
+    /** @return array<array-key, mixed> */
     protected function getTaintAnalysisStubs(): array
     {
         return array_merge(
@@ -78,7 +78,7 @@ class Plugin implements PluginEntryPointInterface
         );
     }
 
-    /** @return list<string> */
+    /** @return array<array-key, mixed> */
     protected function getStubsForVersion(string $version): array
     {
         [$majorVersion] = explode('.', $version);
