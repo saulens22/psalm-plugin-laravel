@@ -33,7 +33,9 @@ final class ModelStubProvider implements GeneratesStubs
 
         $schema_aggregator = new SchemaAggregator();
 
-        foreach (glob($migrations_directory . '*.php') as $file) {
+        $glob = glob($migrations_directory . '*.php');
+
+        foreach ($glob === false ? [] : $glob as $file) {
             $schema_aggregator->addStatements($codebase->getStatementsForFile($file));
         }
 

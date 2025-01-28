@@ -57,7 +57,6 @@ class SchemaAggregator
     {
         $nodeFinder = new NodeFinder();
 
-        /** @var PhpParser\Node\Stmt\Class_[] $classes */
         $classes = $nodeFinder->findInstanceOf($stmts, PhpParser\Node\Stmt\Class_::class);
 
         foreach ($classes as $stmt) {

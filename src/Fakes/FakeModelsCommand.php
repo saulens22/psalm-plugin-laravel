@@ -10,7 +10,6 @@ use Psalm\LaravelPlugin\Handlers\Eloquent\Schema\SchemaAggregator;
 use Psalm\LaravelPlugin\Handlers\Eloquent\Schema\SchemaColumn;
 
 use function config;
-use function get_class;
 use function is_a;
 use function in_array;
 use function implode;
@@ -23,6 +22,9 @@ class FakeModelsCommand extends ModelsCommand
 
     public function __construct(Filesystem $files, private SchemaAggregator $schema)
     {
+        /**
+         * @psalm-suppress TooFewArguments
+         */
         parent::__construct($files);
     }
 
